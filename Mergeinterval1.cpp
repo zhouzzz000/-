@@ -18,8 +18,6 @@ bool cmp(ss a,ss b)
 }
  int main()
  {
- 	freopen("Mergeinterval1.txt","r",stdin);
- 	freopen("Mergeinterval2.txt","w",stdout);
  	ll l ,r;
  	char c;
  	int n;
@@ -31,55 +29,41 @@ bool cmp(ss a,ss b)
  		n++;
 	 }
 	 sort(a,a+n,cmp);
-	mm *h,*p,*q; 
-	mm *t;
-	h = new mm;
-	t = new mm;
-	t->l = a[0].l;
-	t->r = a[0].r;
-	h->next = t;
-	q = h->next;
-	p = h->next;
+	 int p = 0;
 	 for(int i = 1;i < n;i++)
-	{
-		t = new mm;
-		t->l = a[i].l;
-		t->r = a[i].r;
-		q->next = t;
-		q = q->next;
-	}
-	q->next = NULL;
-	/*for(;p!=NULL;p=p->next)
-	{
-		cout << p->l << " " << p->r << endl;
-	}*/
-
-	while(p->next!=NULL)
-	{
-		if(p->r<=p->next->l) {
-			p=p->next;
-			continue;
+	 {
+	 	if(a[p].l == -1000)
+		{
+		 p++;
+		 continue;
 		}
-		else if(p->r < p->next->r) {
-			t = new mm;
-			t = p->next;
-			p->r = t->r;
-			p->next = t->next;
-			continue;
-		}
-		else if(p->r>p->next->r){
-			t = new mm;
-			t = p->next;
-			p->next = t->next;
-		}
-	}
-	h = h->next;
-	while(h!=NULL)
-	{
-		
-		cout << h->l << "," << h->r;
-		if(h->next!=NULL)cout <<" ";
-		h=h->next;
-	}
+	 	if(a[p].r<a[i].l)
+	 	{
+	 		p++;
+	 		continue;
+		 }
+		 else if(a[p].r>=a[i].r)
+		 {
+		 	a[i].r = -1000;
+		 	a[i].l = -1000;
+		 	continue;
+		 }
+		 else if(a[p].r>=a[i].l)
+		 {
+		 	a[p].r = a[i].r;
+		 	a[i].r = -1000;
+		 	a[i].l = -1000;
+		 	continue;
+		 }
+		 
+	 }
+	 for(int i = 0;i<n;i++)
+	 {
+	 	if(a[i].l != -1000)
+	 	{
+	 		cout << a[i].l << "," << a[i].r;
+	 		if(i!=n-1)cout<<" ";
+		 }
+	 }
  	return 0;
  }
