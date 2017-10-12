@@ -9,11 +9,11 @@ using namespace std;
 int main()
 {
 	//freopen("3.out","w",stdout);
-	int N;
+/*	int N;
 	cin >> N;
 	int k = 0;
 	while(N--)
-	{
+	{*/
 		int k1 = 0,k2 = 0;
 		scanf("%s",s1);
 		scanf("%s",s2);
@@ -41,8 +41,8 @@ int main()
 			t = x/10;
 		}
 		if(t > 0) s[i++] = 1,t=0;
-		cout << "Case "<<++k<<":"<<endl;
-		cout<<s1<<" + "<<s2<<" = "; 
+	//	cout << "Case "<<++k<<":"<<endl;
+	//	cout<<s1<<" + "<<s2<<" = "; 
 		i = i-1;
 		while(i>0&&s[i] == 0) 
 		{
@@ -52,13 +52,13 @@ int main()
 		{
 			cout << s[i--];
 		}
-		 if(N!=0) {  
+	/*	 if(N!=0) {  
             cout << endl << endl;
         }
 		else{  
             cout << endl;  
-        } 
-	}
+        } */
+//	}
 	return 0;
 }
 
